@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>疲劳检测系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>疲劳检测系统</h1>
+            <p class="subtitle">Fatigue Detection System</p>
+        </header>
+
+        <div class="main-content">
+            <div class="video-section">
+                <div class="video-container">
+                    <img id="video-feed" src="/video_feed" alt="Video Feed" />
+                    <div class="video-overlay">
+                        <span class="status-badge" id="status-badge">正常</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="panel fatigue-level-panel">
+                    <h2>疲劳等级</h2>
+                    <div class="level-display">
+                        <div class="level-indicator" id="level-indicator">
+                            <span class="level-text" id="level-text">Normal</span>
+                            <span class="level-score" id="level-score">0/100</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel stats-panel">
+                    <h2>统计数据</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">总眨眼次数</span>
+                            <span class="stat-value" id="total-blinks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">打哈欠次数</span>
+                            <span class="stat-value" id="yawn-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">眨眼频率</span>
+                            <span class="stat-value" id="blink-rate">0.0 /min</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">闭眼时长</span>
+                            <span class="stat-value" id="eye-closed">0.0s</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">运行时间</span>
+                            <span class="stat-value" id="runtime">00:00:00</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">FPS</span>
+                            <span class="stat-value" id="fps">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel indicators-panel">
+                    <h2>实时指标</h2>
+                    <div class="indicators-grid">
+                        <div class="indicator-item">
+                            <span class="indicator-label">EAR (眼睛纵横比)</span>
+                            <span class="indicator-value" id="ear-value">0.000</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-label">MAR (嘴部纵横比)</span>
+                            <span class="indicator-value" id="mar-value">0.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel alerts-panel">
+                    <h2>警报状态</h2>
+                    <div class="alerts-grid">
+                        <div class="alert-item" id="fatigue-alert">
+                            <span class="alert-icon">⚠️</span>
+                            <span class="alert-text">疲劳警报</span>
+                        </div>
+                        <div class="alert-item" id="yawn-alert">
+                            <span class="alert-icon">🥱</span>
+                            <span class="alert-text">打哈欠</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>基于 MediaPipe Face Mesh 的疲劳检测系统</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
